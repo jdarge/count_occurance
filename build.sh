@@ -1,2 +1,2 @@
 #!/bin/sh
-gcc -o run main.c -Wall -Wextra -Wpedantic -ggdb -lpthread -O3 
+gcc -o run main.c thpool.c -Wall -Wextra -Wpedantic -ggdb -lpthread -O3 
