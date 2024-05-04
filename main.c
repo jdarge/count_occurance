@@ -44,17 +44,21 @@ void print_word_counts(WordCount *counts, int count) {
 
 int main(void) {
 
-    const char *input = "abcdeabcdabcdeabcdeabcdadiubsabcdbcebcebabvbcdabcdeabcdebcdeabde";
-    const char *names[] = {"abc", "bcd", "abcde"};
+    struct timespec start, end;
+    double elapsed_time;
+	
+	const char *input = "abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde";
+    const char *names[] = {"abc", "bcd", "abcde", "ab", "cde", "de"};
+	
     int name_count = sizeof(names) / sizeof(names[0]);
-
-    clock_t start = clock();
+	
+	clock_gettime(CLOCK_MONOTONIC, &start);
     WordCount *wc = get_occurrences(input, names, name_count);
-    clock_t end = clock();
+	clock_gettime(CLOCK_MONOTONIC, &end);
+	duration = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
 
-    double time_taken = ((double) (end - start)) / CLOCKS_PER_SEC;
+	printf("Time taken: %.6f seconds\n", time_taken);
 
-    printf("Time taken: %.6f seconds\n", time_taken);
     print_word_counts(wc, name_count);
 
     free(wc);
