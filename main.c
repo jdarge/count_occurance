@@ -62,8 +62,7 @@ int main(void) {
     return 0;
 }
 
-void
-count_occurrences_thread(void *arg) {
+void count_occurrences_thread(void *arg) {
 
     OccurrenceData *data = (OccurrenceData *) arg;
     Suffix *suffixes = data->suffixes;
@@ -91,8 +90,7 @@ count_occurrences_thread(void *arg) {
     }
 }
 
-WordCount *
-get_occurrences(const char *text, const char **words, int words_count) {
+WordCount *get_occurrences(const char *text, const char **words, int words_count) {
     long text_len = (long) strlen(text);
     Suffix *suffixes = create_suffixes(text, text_len);
 
@@ -141,8 +139,7 @@ get_occurrences(const char *text, const char **words, int words_count) {
     return wc;
 }
 
-Suffix *
-create_suffixes(const char *text, long length) {
+Suffix *create_suffixes(const char *text, long length) {
     Suffix *suffixes = (Suffix *) malloc(length * sizeof(Suffix));
     if (!suffixes) {
         return NULL;
@@ -156,13 +153,11 @@ create_suffixes(const char *text, long length) {
     return suffixes;
 }
 
-int
-compare_suffixes(const void *a, const void *b) {
+int compare_suffixes(const void *a, const void *b) {
     return strcmp(((Suffix *) a)->suffix, ((Suffix *) b)->suffix);
 }
 
-long
-binary_search(Suffix *suffixes, const char *name, long left, long right, long name_len) {
+long binary_search(Suffix *suffixes, const char *name, long left, long right, long name_len) {
     while (left <= right) {
         long mid = left + (right - left) / 2;
         char *suffix = suffixes[mid].suffix;
