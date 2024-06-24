@@ -30,11 +30,11 @@ typedef struct {
     #define MAX_THREADS 4
 #endif
 
-void count_occurrences_thread(void *arg);//
-WordCount *get_occurrences(const char *text, const char **words, int words_count);//
-long binary_search(Suffix *suffixes, const char *name, long left, long right, long name_len);//
-Suffix *create_suffixes(const char *text, long length);//
-int compare_suffixes(const void *a, const void *b);//
+void count_occurrences_thread(void *arg);
+WordCount *get_occurrences(const char *text, const char **words, int words_count);
+long binary_search(Suffix *suffixes, const char *name, long left, long right, long name_len);
+Suffix *create_suffixes(const char *text, long length);
+int compare_suffixes(const void *a, const void *b);
 
 void print_word_counts(WordCount *counts, int count) {
     for (int i = 0; i < count; i++) {
